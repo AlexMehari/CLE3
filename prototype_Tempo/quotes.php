@@ -6,7 +6,7 @@ $color = "";
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-require_once("settings.php");
+require_once("php/settings.php");
 $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
 
 if ($mysqli->connect_error) {

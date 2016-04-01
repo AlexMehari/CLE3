@@ -6,7 +6,7 @@ function init() {
 }
 
 function getQuotes() {
-    $.getJSON("showQuotes.php").done(getQuotesCallback);
+    $.getJSON("php/showQuotes.php").done(getQuotesCallback);
 }
 
 
@@ -14,8 +14,7 @@ function getQuotesCallback(data) {
     console.log(data);
     $.each(data, function (index, val) {
         $('#quotes').append('<ul>' + '<li>' +
-            '<img src=' + "upload/" + val.imgurl + '>' + '<' +
-            'a href=' + '>' + '</a></li>' +
+            '<a href="php/details.php?id=' + val.id + '">' + '<img src=' + "upload/" + val.imgurl + '>' + '</a>' + '</li>' +
             '</ul>');
     });
 }
