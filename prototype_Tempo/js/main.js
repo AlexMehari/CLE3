@@ -54,17 +54,18 @@ function showRecipes(data) {
 
     //Loop through all the dishes
     for (var i = 0; i < dishes.length; i++) {
-        //Create image (with ID used for click handler) & append to div
-        var image = createDomElement({tagName: 'img', attributes: {class: 'quoteimg',src: "upload/"+dishes[i].name, id: dishes[i].name}});
-
+        //create div
+        var div = createDomElement({tagName: 'div', attributes: {class: 'col-xs-6 col-md-3'}});
         //Create  link
-        var link = createDomElement({tagName: 'a', attributes: {href:'includes/details.php?id=' +dishes[i].id}});
-
-        //Append title to div
+        var link = createDomElement({tagName: 'a', attributes: {href:'includes/details.php?id=' +dishes[i].id, class:'thumbnail'}});
+        // append link to div
+        div.appendChild(link);
+        //Create image
+        var image = createDomElement({tagName: 'img', attributes: {class: 'quoteimg',src: "upload/"+dishes[i].name, id: dishes[i].name}});
+        //Append image to link
         link.appendChild(image);
-
         //Append to the DOM
-        quoteGallery.appendChild(link);
+        quoteGallery.appendChild(div);
     }
 }
 

@@ -13,7 +13,7 @@
                 <input type='submit' name="submit" class="btn btn-default">
             </form>
             <h2>Alle quotes</h2>
-            <div id="quotes">
+            <div class="row" id="quotes">
             </div>
         </div>
     </div>

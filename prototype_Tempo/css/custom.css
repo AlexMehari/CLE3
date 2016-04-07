@@ -100,10 +100,18 @@ ul {
     transform: translate(0px, 0px);
 }
 
+.col-xs-6.col-md-3 {
+    width: 33.3%;
+}
+
 @media screen and (max-width: 980px) {
     .col-md-12 form {
         width: 100%;
         padding-top: 20px;
+    }
+
+    .col-xs-6.col-md-3 {
+        width: 100%;
     }
 }
 
@@ -356,3 +364,9 @@ textarea {
     display: flex;
     align-items: center;
 }
+
+
+h2 {
+    text-align: center;
+}
+
