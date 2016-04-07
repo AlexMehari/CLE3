@@ -312,7 +312,9 @@ img.weathericonsmall {
 
 #quotes {
     flex-flow: row wrap;
+    width: 80%;
     display: flex;
+    margin: 0 auto;
 }
 
 textarea {
@@ -327,7 +329,7 @@ textarea {
     padding: 10px;
 }
 
-.quoteimg img {
+.quoteimg  img {
     width: 300px;
 }
 
