@@ -1,12 +1,5 @@
 window.addEventListener('load', init);
-var weather = "";
-var sunny = document.getElementById('sunny');
-var cloudy = document.getElementById('cloudy');
-var snow = document.getElementById('snow');
-var rain = document.getElementById('rain');
-
-
-
+var weather = "ferrodomerain";
 function init() {
 
     var apiKey = "1284e39dd53a1abebb1ba49e49a2dc74";
@@ -34,6 +27,9 @@ function init() {
             case "Mist":
                 weather = "ferrodomemist";
                 break;
+            case "drizzle":
+                weather = "ferrodomerain";
+                break;
         }
 
         console.log(weather);
@@ -45,44 +41,13 @@ function init() {
             dataType: 'jsonp',
             success: function (data) {
                 var image = '';
-                var randNumber = Math.floor(Math.random() * 5) + 1;
-                // console.log(data.data[randNumber].images.standard_resolution.url);
-                image += '<li><img src=' + data.data[randNumber].images.standard_resolution.url + '><a href=' + '>' + '</a></li>';
-                $('ul').html(image);
+                var randNumber = Math.floor(Math.random() * 4) + 1;
+                image += '<li><img src=' + data.data[randNumber].images.standard_resolution.url + ' class="photo"><a href=' + '>' + '</a></li>';
+                $('#quotes').html(image);
+                var content = document.getElementById("quotes")
             }
         });
     }
-
-    myVar = setInterval(randomQuote, 1000);
+    myVar = setInterval(randomQuote, 5000);
     randomQuote();
-
 }
-
-
-sunny.addEventListener('click', function () {
-    weather = "ferrodomesun";
-    randomQuote();
-    console.log(weather);
-});
-
-cloudy.addEventListener('click', function () {
-    weather = "ferrodomecloudy";
-    randomQuote();
-    console.log(weather);
-});
-
-snow.addEventListener('click', function () {
-    weather = "ferrodomesnow";
-    randomQuote();
-    console.log(weather);
-});
-
-rain.addEventListener('click', function () {
-    weather = "ferrodomerain";
-    randomQuote();
-    console.log(weather);
-});
-
-
-//  url: "http://api.openweathermap.org/data/2.5/forecast/daily?id=524901&lang=zh_cn&appid=1284e39dd53a1abebb1ba49e49a2dc74",
-

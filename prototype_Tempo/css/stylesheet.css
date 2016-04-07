@@ -7,3 +7,33 @@ img.button     {
     height: 50px;
     width: 50px;
 }
+
+body    {
+    background-color: #222222;
+    color: #878787;
+    font-family: sans-serif;
+}
+
+table   {
+    padding: 10px;
+    border: 1px solid black;
+    margin: auto;
+}
+
+h1  {
+    text-align: center;
+}
+
+p{
+    text-align: center;
+}
+
+form{
+    margin: 50px auto;
+    width: 300px;
+    padding: 50px;
+    border: 1px solid white;
+}
+
+input   {
+}

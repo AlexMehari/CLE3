@@ -6,7 +6,7 @@ $color = "";
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-require_once("php/settings.php");
+require_once("includes/settings.php");
 $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
 
 if ($mysqli->connect_error) {
@@ -16,7 +16,8 @@ if ($mysqli->connect_error) {
 
 
 if (isset($_POST["submit"])) {
-    $color = $_POST[color];
+    $color = $_POST['color'];
+    echo $color;
 
 
     function hex2rgb($hex)
@@ -40,8 +41,8 @@ if (isset($_POST["submit"])) {
     $rgb = hex2rgb($color);
 
     $quote = $_POST["quote"];
-    $uploadedFile = $_FILES['file_upload']['name'];
-    $ext = end(explode(".", $uploadedFile));
+    $name = pathinfo($_FILES['file_upload']['name'], PATHINFO_FILENAME);
+    $ext = pathinfo($_FILES['file_upload']['name'], PATHINFO_EXTENSION);
     echo $ext;
 
 
@@ -57,13 +58,14 @@ if (isset($_POST["submit"])) {
     if ($_FILES['file_upload']['size'] > 500000) {
         die('File uploaded exceeds maximum upload size.');
     }
-
+    $increment = '';
 // Check if the file exists
-    if (file_exists('upload/' . $uploadedFile)) {
-        die('File with that name already exists.');
+    while (file_exists('upload/' . $name . $increment . '.' . $ext)) {
+        $increment++;
     }
+    echo $name;
+    $image_path = 'upload/' . $name . $increment . '.' . $ext;
 
-    $image_path = 'upload/' . $uploadedFile;
 
 // Upload file
     if (!move_uploaded_file($_FILES['file_upload']['tmp_name'], $image_path)) {
@@ -83,10 +85,11 @@ if (isset($_POST["submit"])) {
     $y = 200;
     $fonts = "fonts/coolvetica rg.ttf";
     $text = $quote;
-    $str = chunk_split($text, 15, "\n\r");
+//    $str = chunk_split($text, 15, "\n\r");
+    $str = wordwrap($text, 15, "\n\r", true);
     imagettftext($tmp, $font, 0, $x, $y, $text_color, $fonts, $str);
 
-    imagejpeg($tmp, "upload/" . $uploadedFile, 100);
+    imagejpeg($tmp, $image_path, 100);
 
 // Free up memory
     imagedestroy($src);
@@ -94,20 +97,19 @@ if (isset($_POST["submit"])) {
 
     echo "File uploaded successfully";
 
-    $urlimage = $_FILES['file_upload']['name'];
+    $urlimage = $name . $increment . '.' . $ext;
 
     $query = "insert into quotes(imgurl, valid)
           VALUES ('$urlimage','$valid')";
 
     if (mysqli_query($mysqli, $query)) {
         echo "quote toegevoegd";
-        header('Location: index.php');
+        header('Location: upload.php');
     } else {
         echo "Error: " . $query . " < br>" . mysqli_error($mysqli);
     }
     mysqli_close($mysqli);
 }
-
 
 
 

@@ -1,0 +1,49 @@
+<!-- JS for Facebook Share -->
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v2.5";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<!-- Second navbar for search -->
+<div class="nav">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#navbar-collapse-3">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="info" id="place">Rotterdam</li>
+                    <li class="info"><img src="img/cloud.png"  class="weathericonsmall" id="weatherIcon"/>
+                    </li>
+                    <li class="info"><span id="degrees"></span></li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-3">
+                <div class="navbar-form" role="search">
+                    <div class="row">
+                        <div class="col-md-8 col-xs-0"></div>
+                        <div class="col-md-3 col-xs-10">
+                            <div class="form-group">
+                                <input type="text" class="form-control searchform" placeholder="Search" id="city"/>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-2">
+                            <button class="btn btn-primary" id="searchCity"><span
+                                    class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
