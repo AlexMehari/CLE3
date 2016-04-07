@@ -9,7 +9,7 @@ var quoteGallery;
 function init() {
     getRecipes();
 
-    //Save dishGallery in variable for later use & add event listener for images
+    //Save quoteGallery in variable for later use & add event listener for images
     quoteGallery = document.getElementById('quotes');
 }
 
@@ -48,20 +48,20 @@ function ajaxRequest(ajaxSuccessHandler, data) {
  * @param data
  */
 function showRecipes(data) {
-    //Save dishes in variable
-    var dishes = data.quotes;
+    //Save quotes in variable
+    var quotes = data.quotes;
     console.log(data.quotes);
 
-    //Loop through all the dishes
-    for (var i = 0; i < dishes.length; i++) {
+    //Loop through all the quotes
+    for (var i = 0; i < quotes.length; i++) {
         //create div
         var div = createDomElement({tagName: 'div', attributes: {class: 'col-xs-6 col-md-3'}});
         //Create  link
-        var link = createDomElement({tagName: 'a', attributes: {href:'includes/details.php?id=' +dishes[i].id, class:'thumbnail'}});
+        var link = createDomElement({tagName: 'a', attributes: {href:'includes/details.php?id=' +quotes[i].id, class:'thumbnail'}});
         // append link to div
         div.appendChild(link);
         //Create image
-        var image = createDomElement({tagName: 'img', attributes: {class: 'quoteimg',src: "upload/"+dishes[i].name, id: dishes[i].name}});
+        var image = createDomElement({tagName: 'img', attributes: {class: 'quoteimg',src: "upload/"+quotes[i].name, id: quotes[i].name}});
         //Append image to link
         link.appendChild(image);
         //Append to the DOM
