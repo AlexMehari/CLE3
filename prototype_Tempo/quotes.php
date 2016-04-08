@@ -53,9 +53,9 @@ if (isset($_POST["submit"])) {
     }
 
     // Check filesize
-    if ($_FILES['file_upload']['size'] > 500000) {
-        die('File uploaded exceeds maximum upload size.');
-    }
+//    if ($_FILES['file_upload']['size'] > 500000) {
+//        die('File uploaded exceeds maximum upload size.');
+//    }
     $increment = '';
 // Check if the file exists
     while (file_exists('upload/' . $name . $increment . '.' . $ext)) {

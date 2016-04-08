@@ -5,7 +5,7 @@ header("Content-Type: application/json");
 
 
 //Build query depending on parameter state
-$query = "SELECT * FROM quotes WHERE valid = 'valid'";
+$query = "SELECT * FROM quotes ";
 
 //Execute query & fetch result
 $result = $db->query($query);

@@ -42,6 +42,8 @@ function ajaxRequest(ajaxSuccessHandler, data) {
     $.ajax(parameters).done(ajaxSuccessHandler);
 }
 
+
+
 /**
  * Show all the recipes on the screen
  *
@@ -56,6 +58,8 @@ function showRecipes(data) {
     for (var i = 0; i < quotes.length; i++) {
         //create div
         var col = createDomElement({tagName: 'div', attributes: {class: 'col-xs-6 col-md-3'}});
+        //create fb share div
+        //var share = createDomElement({tagName: 'div', attributes: {class: 'fb-share-button',href:'includes/details.php?id=' +quotes[i].id}});
         // create thumbnail
         var thumbnail = createDomElement({tagName: 'div', attributes: {class: 'thumbnail'}});
         col.appendChild(thumbnail);
