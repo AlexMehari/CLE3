@@ -2,10 +2,8 @@
 $urlimage = "";
 $valid = 'invalid';
 $quote = "";
+$person = "";
 $color = "";
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 require_once("includes/settings.php");
 $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
 
@@ -17,7 +15,7 @@ if ($mysqli->connect_error) {
 
 if (isset($_POST["submit"])) {
     $color = $_POST['color'];
-    echo $color;
+    $person = $_POST['name'];
 
 
     function hex2rgb($hex)
@@ -54,7 +52,7 @@ if (isset($_POST["submit"])) {
         die('Please ensure you are uploading an image.');
     }
 
-// Check filesize
+    // Check filesize
     if ($_FILES['file_upload']['size'] > 500000) {
         die('File uploaded exceeds maximum upload size.');
     }
@@ -99,12 +97,15 @@ if (isset($_POST["submit"])) {
 
     $urlimage = $name . $increment . '.' . $ext;
 
-    $query = "insert into quotes(imgurl, valid)
-          VALUES ('$urlimage','$valid')";
+    $query = "insert into quotes(imgurl, name,valid)
+          VALUES ('$urlimage','$person ','$valid')";
 
     if (mysqli_query($mysqli, $query)) {
         echo "quote toegevoegd";
-        header('Location: upload.php');
+        echo '<script type="text/javascript">
+           window.location = " upload.php"
+      </script>';
+        exit();
     } else {
         echo "Error: " . $query . " < br>" . mysqli_error($mysqli);
     }

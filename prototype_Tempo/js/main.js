@@ -55,17 +55,28 @@ function showRecipes(data) {
     //Loop through all the quotes
     for (var i = 0; i < quotes.length; i++) {
         //create div
-        var div = createDomElement({tagName: 'div', attributes: {class: 'col-xs-6 col-md-3'}});
+        var col = createDomElement({tagName: 'div', attributes: {class: 'col-xs-6 col-md-3'}});
+        // create thumbnail
+        var thumbnail = createDomElement({tagName: 'div', attributes: {class: 'thumbnail'}});
+        col.appendChild(thumbnail);
+        // create caption
+        var caption = createDomElement({tagName: 'div', attributes: {class: 'caption'}});
+        thumbnail.appendChild(caption);
         //Create  link
-        var link = createDomElement({tagName: 'a', attributes: {href:'includes/details.php?id=' +quotes[i].id, class:'thumbnail'}});
-        // append link to div
-        div.appendChild(link);
+        var link = createDomElement({tagName: 'a', attributes: {href:'includes/details.php?id=' +quotes[i].id, class:''}});
+        var name = createDomElement({tagName: 'h4', attributes: {}, content: quotes[i].person});
         //Create image
         var image = createDomElement({tagName: 'img', attributes: {class: 'quoteimg',src: "upload/"+quotes[i].name, id: quotes[i].name}});
         //Append image to link
         link.appendChild(image);
+        //append name to caption
+        caption.appendChild(name);
+        // append link to thumbnail
+        thumbnail.appendChild(link);
+
+
         //Append to the DOM
-        quoteGallery.appendChild(div);
+        quoteGallery.appendChild(col);
     }
 }
 

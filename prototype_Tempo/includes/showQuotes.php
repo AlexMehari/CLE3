@@ -5,7 +5,7 @@ header("Content-Type: application/json");
 
 
 //Build query depending on parameter state
-$query = "SELECT * FROM quotes";
+$query = "SELECT * FROM quotes WHERE valid = 'valid'";
 
 //Execute query & fetch result
 $result = $db->query($query);
@@ -20,7 +20,8 @@ $returnData['meta'] = [
 while ($row = $result->fetch_assoc()) {
     $returnData['quotes'][] = [
         "id" => $row['id'],
-        "name" => $row['imgurl']
+        "name" => $row['imgurl'],
+        "person" => $row['name']
     ];
 }
 

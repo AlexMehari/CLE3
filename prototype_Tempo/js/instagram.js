@@ -31,7 +31,6 @@ function init() {
                 weather = "ferrodomerain";
                 break;
         }
-
         console.log(weather);
     }
 

@@ -8,7 +8,8 @@
         <div class="col-md-12 col-xs-12">
             <form method='post' enctype="multipart/form-data" action='quotes.php'>
                 kies een afbeelding: <input type='file' name='file_upload' class="form-control" placeholder="kies een afbeelding">
-                <textarea name="quote" id="" cols="30" rows="10" class="form-control"></textarea>
+                <input type="text" name="name" class="form-control" placeholder="vul je naam in">
+                <textarea name="quote" id="" cols="30" rows="10" class="form-control" placeholder="type hier je quote"></textarea>
                 <span>kies een tekstkleur</span><input type="color" name="color" value="#ff0000">
                 <input type='submit' name="submit" class="btn btn-default">
             </form>

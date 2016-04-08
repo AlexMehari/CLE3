@@ -1,6 +1,8 @@
 <!--php file that checks is the user is permitted-->
 <?php
-require_once("includes/control.php")
+require_once("includes/control.php");
+ error_reporting(0);
+error_reporting(E_ERROR | E_PARSE);
 ?>
 
 <!DOCTYPE html>
